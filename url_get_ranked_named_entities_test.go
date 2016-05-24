@@ -11,7 +11,7 @@ func TestURLGetRankedNamedEntities(t *testing.T) {
 	url := "http://www.dailymail.co.uk/sciencetech/article-2355833/Apples-iPhone-5-hated-handset--majority-people-love-Samsung-Galaxy-S4-study-finds.html"
 	in := c.NewURLGetRankedNamedEntitiesInput(url)
 	out, err := c.URLGetRankedNamedEntities(in)
-	assert.Equal(t, err, nil)
-	assert.Equal(t, out.Status, "OK")
-	assert.Equal(t, out.URL, url)
+	assert.Nil(t, err)
+	assert.Equal(t, "OK", out.Status)
+	assert.Equal(t, url, out.URL)
 }
