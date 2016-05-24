@@ -29,10 +29,11 @@ type Disambiguated struct {
 }
 
 type Output struct {
-	Status     string `json:"status"`
-	StatusInfo string `json:"statusInfo"`
-	Usage      string `json:"usage"`
-	URL        string `json:"url"`
+	Status         string `json:"status"`
+	StatusInfo     string `json:"statusInfo"`
+	WarningMessage string `json:"warningMessage"`
+	Usage          string `json:"usage"`
+	URL            string `json:"url"`
 }
 
 // New client.
