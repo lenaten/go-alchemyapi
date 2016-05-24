@@ -22,7 +22,7 @@ type Entity struct {
 }
 
 type Disambiguated struct {
-	SubType  []string `json:"path"`
+	SubType  []string `json:"subType"`
 	Name     string   `json:"name"`
 	Freebase string   `json:"freebase"`
 	Website  string   `json:"website"`
