@@ -2,7 +2,7 @@
 
  Simple AlchemyAPI client for Go.
 
-# Usage
+## Usage
 ```
 apiKey := "your api key"
 config := alchemyapi.NewConfig(apiKey)
