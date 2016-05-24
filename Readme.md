@@ -15,6 +15,7 @@ output, _ := client.URLGetRankedNamedEntities(input)
 ## Implemented
 - [x] [URLGetRankedNamedEntities](https://www.alchemyapi.com/api/entity/urls.html)
 - [x] [TextGetRankedNamedEntities](https://www.alchemyapi.com/api/entity/textc.html)
+- [x] [URLGetAuthors](https://www.alchemyapi.com/api/authors-web-api)
 
 ## Testing
 
