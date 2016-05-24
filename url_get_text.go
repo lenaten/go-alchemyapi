@@ -1,16 +1,10 @@
 package alchemyapi
 
-import (
-	"encoding/json"
-
-	"github.com/google/go-querystring/query"
-)
+import "encoding/json"
 
 // URLGetTextInput request output.
 type URLGetTextInput struct {
-	APIKey     string `url:"apikey"`
-	OutputMode string `url:"outputMode"`
-	URL        string `url:"url"`
+	URL string `url:"url"`
 }
 
 // URLGetTextOutput request output.
@@ -21,16 +15,16 @@ type URLGetTextOutput struct {
 
 func (c *Client) NewURLGetTextInput(url string) *URLGetTextInput {
 	return &URLGetTextInput{
-		APIKey:     c.APIKey,
-		OutputMode: "json",
-		URL:        url,
+		URL: url,
 	}
 }
 
 // URLGetText returns a URLGetTextOutput.
 func (c *Client) URLGetText(in *URLGetTextInput) (out *URLGetTextOutput, err error) {
-	v, _ := query.Values(in)
-	body, err := c.call("/url/URLGetText", v.Encode())
+	// v, _ := query.Values(in)
+	body, err := c.call("/url/URLGetText", map[string]string{
+		"url": in.URL,
+	})
 	if err != nil {
 		return
 	}

@@ -1,10 +1,6 @@
 package alchemyapi
 
-import (
-	"encoding/json"
-
-	"github.com/google/go-querystring/query"
-)
+import "encoding/json"
 
 type Authors struct {
 	Names []string `json:"names"`
@@ -12,9 +8,7 @@ type Authors struct {
 
 // URLGetAuthorsInput request output.
 type URLGetAuthorsInput struct {
-	APIKey     string `url:"apikey"`
-	OutputMode string `url:"outputMode"`
-	URL        string `url:"url"`
+	URL string `url:"url"`
 }
 
 // URLGetAuthorsOutput request output.
@@ -25,16 +19,16 @@ type URLGetAuthorsOutput struct {
 
 func (c *Client) NewURLGetAuthorsInput(url string) *URLGetAuthorsInput {
 	return &URLGetAuthorsInput{
-		APIKey:     c.APIKey,
-		OutputMode: "json",
-		URL:        url,
+		URL: url,
 	}
 }
 
 // URLGetAuthors returns a URLGetAuthorsOutput.
 func (c *Client) URLGetAuthors(in *URLGetAuthorsInput) (out *URLGetAuthorsOutput, err error) {
-	v, _ := query.Values(in)
-	body, err := c.call("/url/URLGetAuthors", v.Encode())
+	// v, _ := query.Values(in)
+	body, err := c.call("/url/URLGetAuthors", map[string]string{
+		"url": in.URL,
+	})
 	if err != nil {
 		return
 	}

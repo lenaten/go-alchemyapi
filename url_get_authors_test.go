@@ -12,7 +12,7 @@ func TestURLGetAuthors(t *testing.T) {
 	in := c.NewURLGetAuthorsInput(url)
 	out, err := c.URLGetAuthors(in)
 	assert.Nil(t, err)
-	assert.Equal(t, "OK", out.Status)
+	assert.Equal(t, "OK", out.Status, out.StatusInfo)
 	assert.Equal(t, url, out.URL)
 	authors := []string{"Victoria Woollaston"}
 	assert.Equal(t, out.Authors.Names, authors)

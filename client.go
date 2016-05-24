@@ -5,6 +5,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
@@ -43,13 +44,26 @@ func New(config *Config) *Client {
 }
 
 // call rpc style endpoint.
-func (c *Client) call(path string, query string) (io.ReadCloser, error) {
-	url := "https://gateway-a.watsonplatform.net/calls" + path + "?" + query
+func (c *Client) call(path string, in map[string]string) (io.ReadCloser, error) {
 
-	req, err := http.NewRequest("GET", url, nil)
+	query := url.Values{}
+	query.Set("apikey", c.APIKey)
+	query.Set("outputMode", "json")
+
+	u := "http://gateway-a.watsonplatform.net/calls" + path + "?" + query.Encode()
+
+	form := url.Values{}
+	for key, value := range in {
+		form.Add(key, value)
+	}
+
+	req, err := http.NewRequest("POST", u, strings.NewReader(form.Encode()))
 	if err != nil {
 		return nil, err
 	}
+
+	req.PostForm = form
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	r, _, err := c.do(req)
 	return r, err

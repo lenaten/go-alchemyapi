@@ -1,16 +1,10 @@
 package alchemyapi
 
-import (
-	"encoding/json"
-
-	"github.com/google/go-querystring/query"
-)
+import "encoding/json"
 
 // TextGetRankedNamedEntitiesInput request output.
 type TextGetRankedNamedEntitiesInput struct {
-	APIKey     string `url:"apikey"`
-	OutputMode string `url:"outputMode"`
-	Text       string `url:"text"`
+	Text string `url:"text"`
 }
 
 // TextGetRankedNamedEntitiesOutput request output.
@@ -22,16 +16,15 @@ type TextGetRankedNamedEntitiesOutput struct {
 
 func (c *Client) NewTextGetRankedNamedEntities(text string) *TextGetRankedNamedEntitiesInput {
 	return &TextGetRankedNamedEntitiesInput{
-		APIKey:     c.APIKey,
-		OutputMode: "json",
-		Text:       text,
+		Text: text,
 	}
 }
 
 // TextGetRankedNamedEntities returns a TextGetRankedNamedEntitiesOutput.
 func (c *Client) TextGetRankedNamedEntities(in *TextGetRankedNamedEntitiesInput) (out *TextGetRankedNamedEntitiesOutput, err error) {
-	v, _ := query.Values(in)
-	body, err := c.call("/text/TextGetRankedNamedEntities", v.Encode())
+	body, err := c.call("/text/TextGetRankedNamedEntities", map[string]string{
+		"text": in.Text,
+	})
 	if err != nil {
 		return
 	}
