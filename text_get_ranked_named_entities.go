@@ -15,11 +15,9 @@ type TextGetRankedNamedEntitiesInput struct {
 
 // TextGetRankedNamedEntitiesOutput request output.
 type TextGetRankedNamedEntitiesOutput struct {
-	Status     string   `json:"status"`
-	StatusInfo string   `json:"statusInfo"`
-	Usage      string   `json:"usage"`
-	Language   string   `json:"language"`
-	Entities   []Entity `json:"entities"`
+	Output
+	Language string   `json:"language"`
+	Entities []Entity `json:"entities"`
 }
 
 func (c *Client) NewTextGetRankedNamedEntities(text string) *TextGetRankedNamedEntitiesInput {

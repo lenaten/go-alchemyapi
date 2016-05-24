@@ -15,12 +15,9 @@ type URLGetRankedNamedEntitiesInput struct {
 
 // URLGetRankedNamedEntitiesOutput request output.
 type URLGetRankedNamedEntitiesOutput struct {
-	Status     string   `json:"status"`
-	StatusInfo string   `json:"statusInfo"`
-	Usage      string   `json:"usage"`
-	URL        string   `json:"url"`
-	Language   string   `json:"language"`
-	Entities   []Entity `json:"entities"`
+	Output
+	Language string   `json:"language"`
+	Entities []Entity `json:"entities"`
 }
 
 func (c *Client) NewURLGetRankedNamedEntitiesInput(url string) *URLGetRankedNamedEntitiesInput {

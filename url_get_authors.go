@@ -19,11 +19,8 @@ type URLGetAuthorsInput struct {
 
 // URLGetAuthorsOutput request output.
 type URLGetAuthorsOutput struct {
-	Status     string  `json:"status"`
-	StatusInfo string  `json:"statusInfo"`
-	Usage      string  `json:"usage"`
-	URL        string  `json:"url"`
-	Authors    Authors `json:"authors"`
+	Output
+	Authors Authors `json:"authors"`
 }
 
 func (c *Client) NewURLGetAuthorsInput(url string) *URLGetAuthorsInput {

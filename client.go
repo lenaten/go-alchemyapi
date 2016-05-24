@@ -28,6 +28,13 @@ type Disambiguated struct {
 	Website  string   `json:"website"`
 }
 
+type Output struct {
+	Status     string `json:"status"`
+	StatusInfo string `json:"statusInfo"`
+	Usage      string `json:"usage"`
+	URL        string `json:"url"`
+}
+
 // New client.
 func New(config *Config) *Client {
 	c := &Client{Config: config}
