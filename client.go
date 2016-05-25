@@ -23,10 +23,15 @@ type Entity struct {
 }
 
 type Disambiguated struct {
-	SubType  []string `json:"subType"`
-	Name     string   `json:"name"`
-	Freebase string   `json:"freebase"`
-	Website  string   `json:"website"`
+	SubType     []string `json:"subType"`
+	Name        string   `json:"name"`
+	DBpedia     string   `json:"dbpedia"`
+	Yago        string   `json:"yago"`
+	OpenCyc     string   `json:"opencyc"`
+	Umbel       string   `json:"umbel"`
+	MusicBrainz string   `json:"musicBrainz"`
+	Freebase    string   `json:"freebase"`
+	Website     string   `json:"website"`
 }
 
 type Output struct {
